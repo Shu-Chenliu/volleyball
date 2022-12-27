@@ -7,7 +7,11 @@
 #include "People.h"
 //#include "AI.h"
 #include "Ball.h"
-
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 using namespace std;
 
 const int GAME_WIDTH = 800, GAME_HEIGHT = 600;
@@ -64,7 +68,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
     // Music Init
-    /*if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
         cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << endl;
     else
     {
@@ -73,7 +77,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     }
 
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
-        cout << "Could not create window: " << IMG_GetError() << endl;*/
+        cout << "Could not create window: " << IMG_GetError() << endl;
 
     startScreen = new StartScreen(renderer);
     multiSettingScreen = new MultiplaySettingScreen(renderer);
@@ -111,9 +115,9 @@ void Game::displayStartScreen()
     startScreen->update();
     startScreen->render();
 
-    //if (!isSelecting && isSingle)
-        //if (Mix_PlayMusic(bgm, -1) < 0)
-          //  cout << "could not play music! SDL_mixer Error: " << Mix_GetError() << endl;
+    if (!isSelecting && isSingle)
+        if (Mix_PlayMusic(bgm, -1) < 0)
+            cout << "could not play music! SDL_mixer Error: " << Mix_GetError() << endl;
 };
 
 void Game::displayMultiplaySettingScreen()
@@ -122,9 +126,9 @@ void Game::displayMultiplaySettingScreen()
     multiSettingScreen->update();
     multiSettingScreen->render(isMultiConnected, isHost, isGuest, player2, server, client);
 
-    //if (!isSelecting && isMulti && isMultiConnected)
-        //if (Mix_PlayMusic(bgm, -1) < 0)
-          //  cout << "could not play music! SDL_mixer Error: " << Mix_GetError() << endl;
+    if (!isSelecting && isMulti && isMultiConnected)
+        if (Mix_PlayMusic(bgm, -1) < 0)
+            cout << "could not play music! SDL_mixer Error: " << Mix_GetError() << endl;
 };
 
 void Game::displayOptionScreen()
@@ -152,7 +156,7 @@ void Game::handleEvents()
         if (isSingle)
             player1->movePressed(keystate);
 
-        if (keystate[SDL_SCANCODE_ESCAPE])
+        if (keystate[SDL_SCANCODE_ESCAPE])//輸入esc 代表結束程式
             isRunning = false;
         break;
 

@@ -1,6 +1,11 @@
 #include "InitialScreen.h"
 #include "Gameobject.h"
 #include<iostream>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 //#include "TextureManager.h"
 
 const int MODE_WIDTH = 150;
@@ -60,7 +65,7 @@ void StartScreen::handleEvents(const Uint8*& keystate, bool& isSelecting, bool& 
         {
             arrow->setYpos(arrow->getYpos() - 60);
         }
-        if (keystate[SDL_SCANCODE_RETURN])
+        if (keystate[SDL_SCANCODE_RETURN])//enter
         {
             if (arrow->getYpos() == 330)
             {

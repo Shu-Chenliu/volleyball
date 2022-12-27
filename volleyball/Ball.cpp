@@ -3,6 +3,11 @@
 #include "TextureManager.h"
 #include<iostream>
 #include"SDL_mixer.h"
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 const int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 const int SPIKE_RADIUS = 20;
 // for more updates, user can adjust the constant values

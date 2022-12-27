@@ -1,6 +1,11 @@
 #include "People.h"
 #include "TextureManager.h"
 #include <iostream>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 const int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 const float GRAVITY = 0.3;
 const int JUMP_YVEL = -13;

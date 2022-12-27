@@ -1,7 +1,11 @@
 #include <regex>
 #include "GameObject.h"
-#include "MultiplaySettingScreen.h"
-
+#include "Twoplayer.h"
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 const int MODE_WIDTH = 150, MODE_HEIGHT = 50;
 const int TEXT_WIDTH = 300, TEXT_HEIGHT = 50;
 

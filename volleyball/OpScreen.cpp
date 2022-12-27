@@ -1,7 +1,12 @@
-#include "OptionScreen.h"
+#include "OpScreen.h"
 #include "GameObject.h"
 #include "TextureManager.h"
-
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
+#include<string>
 const int MODE_WIDTH = 150;
 const int MODE_HEIGHT = 50;
 
@@ -38,16 +43,16 @@ void OptionScreen::handleEvents(const Uint8* keystate, bool& isOption, int& targ
 
     switch (event.type) {
     case SDL_KEYDOWN:
-        if (arrow->getYpos() == 210 && keystate[SDL_SCANCODE_BACKSPACE] && score.length() > 0)
+        if (arrow->getYpos() == 210 && keystate[SDL_SCANCODE_BACKSPACE] && score.length() > 0)//使用者輸入要刪掉的時候
         {
             score = score.substr(0, score.length() - 1);
-            setScoreDigit->setText(score, black);
+            setScoreDigit->setText(score, black);//setscoredigit秀出score的值然後黑色
         }
         if (arrow->getYpos() == 210 && keystate[SDL_SCANCODE_DOWN])
             arrow->setYpos(510);
         if (arrow->getYpos() == 510 && keystate[SDL_SCANCODE_UP])
             arrow->setYpos(210);
-        if (arrow->getYpos() == 510 && keystate[SDL_SCANCODE_RETURN])
+        if (arrow->getYpos() == 510 && keystate[SDL_SCANCODE_RETURN])//使用者選擇back回到上一頁
         {
             if (checkValid())
             {

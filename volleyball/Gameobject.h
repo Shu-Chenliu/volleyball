@@ -13,7 +13,7 @@ protected:
     int height;
     float xpos;
     float ypos;
-    float radius;
+    float radius=50;
 
     SDL_Texture* objTexture;
     SDL_Rect srcRect, destRect;

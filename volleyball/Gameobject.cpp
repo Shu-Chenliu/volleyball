@@ -1,9 +1,13 @@
 #include <string>
 #include <cstdio>
 #include <cmath>
-#include "GameObject.h"
+#include "Gameobject.h"
 #include "TextureManager.h"
-
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 const int IMG_WIDTH = 1280;
 const int IMG_HEIGHT = 537;
 const int GAME_WIDTH = 800;
@@ -19,7 +23,7 @@ GameObject::GameObject(const std::string textureSheet, int w, int h, int x, int 
 {
     const char* texture = textureSheet.c_str();
     objTexture = TextureManager::loadTexture(texture);
-
+    
     width = w;
     height = h;
     xpos = x;
@@ -42,7 +46,7 @@ GameObject::GameObject(int score, int w, int h, int x, int y)
 {
     // convert int score to char *str
     char str[100];
-    sprintf(str, "%d", score);
+    sprintf_s(str, "%d", score);
     objTexture = TextureManager::loadFont(str);
 
     width = w;
@@ -158,7 +162,7 @@ void GameObject::setYpos(float y)
 void GameObject::setText(const std::string& text, SDL_Color& textColor)
 {
     SDL_DestroyTexture(objTexture);
-    objTexture = TextureManager::loadFont(text, textColor);
+    objTexture = TextureManager::loadFont(text, textColor);//刪掉字體再新增字體
 }
 
 void GameObject::update()
@@ -171,7 +175,7 @@ void GameObject::update()
 void GameObject::update(int score)
 {
     char str[100];
-    sprintf(str, "%d", score);
+    sprintf_s(str, "%d", score);
     SDL_DestroyTexture(objTexture);
     objTexture = TextureManager::loadFont(str);
 

@@ -1,8 +1,12 @@
 #pragma once
 #include <vector>
-#include "Player.h"
+#include "People.h"
 #include "Screen.h"
-
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 class MultiplaySettingScreen : public Screen
 {
 private:
